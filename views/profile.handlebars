@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-auto">
+    <h1>Welcome, {{name}}!</h1>
+    <br>
+    <h2>What do you want to do today?</h2>
+  </div>
+</div>
+<div>
+  {{!-- <h2>
+    <span role="img" aria-label="money"></span>
+    <a href="/">Explore Pokemon!</a>
+  </h12> --}}
+  <a class="poke"  href="/pokemon">Explore an Existing pokemon</a> 
+</div>
+
+
+
+<div class="row mt-4">
+  <div class="col-md-6">
+
+    
+    <div class="loader">
+    <h3>Create A New Pokemon</h3>
+    </div>
+
+    
+
+    <form class="form new-project-form">
+      <div class="form-group">
+        <label  class="pjn"  data-text="Pokemon Name:"   for="project-name">Pokemon name</label>
+        <input class="form-input" type="text" id="project-name" name="project-name" />
+      </div>
+      <div class="form-group">
+         <label  class="pf"  data-text="Level of Pokemon"    for="project-funding">Level of Pokemon</label> 
+        <input class="form-input" type="number" id="project-funding" name="project-funding" />
+      </div>
+      <div class="form-group">
+        <label class="des" data-text="Pokemon description"     for="project-desc">Pokemon Description</label>
+        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button class="btn2" type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if projects.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Projects:</h3>
+
+    {{#each projects as |project|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>
